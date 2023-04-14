@@ -1,5 +1,11 @@
-const getAccessToken = async (authToken: string): Promise<string> => {
-    const stsToken = await fetch("https://sts.googleapis.com/v1/token", {
+export const mergeOptionsWithDefaults = (options: Options) => ({
+    ...defaultOptions,
+    ...options,
+})
+const getAccessToken = async (options: Options): Promise<string> => {
+    const mergedOptions = mergeOptionsWithDefaults(options)
+
+    const stsToken = await fetch(mergedOptions.stsEndpoint, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -8,23 +14,35 @@ const getAccessToken = async (authToken: string): Promise<string> => {
                 "grantType": "urn:ietf:params:oauth:grant-type:token-exchange",
                 "audience": "",
                 "requestedTokenType": "urn:ietf:params:oauth:token-type:access_token",
-                "subjectToken": authToken,
+                "subjectToken": mergedOptions.authToken,
                 "subjectTokenType": "urn:ietf:params:oauth:token-type:jwt",
                 "scope": "https://www.googleapis.com/auth/cloud-platform"
             }
         )
     }).then(res => res.json()).then(res => res.access_token)
-    return await fetch("https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/<service-account>:generateIdToken", {
+    return await fetch(`https://iamcredentials.googleapis.com/v1/projects/-/serviceAccounts/${mergedOptions.serviceAccount}:generateIdToken`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${stsToken}`
         },
         body: JSON.stringify({
-            "audience": "32555940559.apps.googleusercontent.com",
+            "audience": mergedOptions.iamAudience,
             "includeEmail": "true"
         })
     }).then(res => res.json()).then(res => res.token)
+}
+
+export interface Options {
+    authToken: string,
+    serviceAccount: string,
+    stsEndpoint?: string,
+    iamAudience? : string
+}
+
+export const defaultOptions = {
+    stsEndpoint: "https://sts.googleapis.com/v1/token",
+    iamAudience: "32555940559.apps.googleusercontent.com"
 }
 
 export default getAccessToken
