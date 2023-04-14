@@ -12,7 +12,7 @@ const getAccessToken = async (options: Options): Promise<string> => {
         },
         body: JSON.stringify({
                 "grantType": "urn:ietf:params:oauth:grant-type:token-exchange",
-                "audience": "",
+                "audience": mergedOptions.stsAudience,
                 "requestedTokenType": "urn:ietf:params:oauth:token-type:access_token",
                 "subjectToken": mergedOptions.authToken,
                 "subjectTokenType": "urn:ietf:params:oauth:token-type:jwt",
@@ -35,6 +35,7 @@ const getAccessToken = async (options: Options): Promise<string> => {
 
 export interface Options {
     authToken: string,
+    stsAudience: string,
     serviceAccount: string,
     stsEndpoint?: string,
     iamAudience? : string
