@@ -7,7 +7,11 @@
     "test": "npm test"
   },
   "author": "rolaca11",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rolaca11/gcp-external-idp-impersonator"
+  },
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^5.0.4"
   }
