@@ -1,0 +1,14 @@
+{
+  "name": "gcp-external-idp-impersonator",
+  "version": "1.0.0",
+  "description": "This package takes a JWT token from an external provider and converts it to a GCP compatible one",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "rolaca11",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
