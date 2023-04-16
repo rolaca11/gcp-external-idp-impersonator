@@ -26,6 +26,7 @@ jobs:
         with:
           node-version: '18.13.0'
       - name: Set Version
+        if: IMAGE_VERSION
         run: npm version "${IMAGE_VERSION:-$GITHUB_SHA}"
       - name: Install
         run: npm install
@@ -36,6 +37,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Publish
+        if: IMAGE_VERSION
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm publish
