@@ -24,6 +24,7 @@ jobs:
         with:
           node-version: '18.13.0'
           registry-url: 'https://registry.npmjs.org/'
+          always-auth: true
       - run: cat .npmrc
       - name: Set Version
         if: ${{ inputs.version != null }}
