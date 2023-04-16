@@ -1,11 +1,16 @@
 {
   "name": "gcp-external-idp-impersonator",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "This package takes a JWT token from an external provider and converts it to a GCP compatible one",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
-  "files": ["dist", "LICENSE", "README.md", "package.json"],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "lint": "eslint ./src",
