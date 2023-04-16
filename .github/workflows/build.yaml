@@ -15,6 +15,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     env:
       IMAGE_NAME: "us-central1-docker.pkg.dev/calcium-doodad-366020/service-images/blog-frontend"
       IMAGE_VERSION: ${{ inputs.version }}
