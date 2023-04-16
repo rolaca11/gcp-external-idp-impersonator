@@ -16,6 +16,8 @@ jobs:
   deploy:
     permissions:
       packages: write
+      contents: read
+      id-token: write
     needs:
       - build
     name: Deploy
