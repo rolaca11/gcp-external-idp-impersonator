@@ -1,5 +1,5 @@
 {
-  "name": "@rolaca11/gcp-external-idp-impersonator",
+  "name": "gcp-external-idp-impersonator",
   "version": "0.2.16",
   "description": "This package takes a JWT token from an external provider and converts it to a GCP compatible one",
   "main": "dist/index.js",
@@ -20,9 +20,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/rolaca11/gcp-external-idp-impersonator"
-  },
-  "publishConfig": {
-    "@rolaca11:registry": "https://npm.pkg.github.com"
   },
   "license": "MIT",
   "devDependencies": {
