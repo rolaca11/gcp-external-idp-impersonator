@@ -1,5 +1,5 @@
 {
-  "name": "gcp-external-idp-impersonator",
+  "name": "@rolaca11/gcp-external-idp-impersonator",
   "version": "0.2.15",
   "description": "This package takes a JWT token from an external provider and converts it to a GCP compatible one",
   "main": "dist/index.js",
