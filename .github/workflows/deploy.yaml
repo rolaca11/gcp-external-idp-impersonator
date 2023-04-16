@@ -23,8 +23,6 @@ jobs:
         uses: 'actions/setup-node@v3'
         with:
           node-version: '18.13.0'
-          registry-url: 'https://registry.npmjs.org'
-          always-auth: true
       - name: Set Version
         if: ${{ inputs.version != null }}
         run: npm version "${IMAGE_VERSION:-$GITHUB_SHA}" --allow-same-version --no-git-tag-version
