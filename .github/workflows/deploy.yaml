@@ -15,6 +15,8 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     environment: ${{ inputs.environment }}
     env:
       IMAGE_VERSION: ${{ inputs.version }}
