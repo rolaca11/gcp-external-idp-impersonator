@@ -1,0 +1,23 @@
+name: Deploy Release Tag
+on:
+  push:
+    tags:
+      - v*
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build:
+    uses: "./.github/workflows/build.yaml"
+    with:
+      version: ${{github.ref_name}}
+  deploy:
+    needs:
+      - build
+    name: Deploy
+    uses: "./.github/workflows/deploy.yaml"
+    with:
+      environment: prod
+      version: ${{github.ref_name}}

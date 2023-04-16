@@ -1,0 +1,33 @@
+name: Lint&Test Branch
+on:
+  pull_request:
+  workflow_call:
+    inputs:
+      version:
+        type: string
+        required: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: "us-central1-docker.pkg.dev/calcium-doodad-366020/service-images/blog-frontend"
+      IMAGE_VERSION: ${{ inputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Node
+        uses: 'actions/setup-node@v3'
+        with:
+          node-version: '18.13.0'
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm run test
+      - name: Build
+        run: npm run build
