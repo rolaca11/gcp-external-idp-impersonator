@@ -7,16 +7,12 @@ on:
       version:
         type: string
 
-permissions:
-  contents: read
-  id-token: write
+permissions: write-all
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
     environment: ${{ inputs.environment }}
     env:
       IMAGE_VERSION: ${{ inputs.version }}

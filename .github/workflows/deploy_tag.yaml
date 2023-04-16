@@ -4,9 +4,7 @@ on:
     tags:
       - v*
 
-permissions:
-  contents: read
-  id-token: write
+permissions: write-all
 
 jobs:
   build:
@@ -14,10 +12,6 @@ jobs:
     with:
       version: ${{github.ref_name}}
   deploy:
-    permissions:
-      packages: write
-      contents: read
-      id-token: write
     needs:
       - build
     name: Deploy
