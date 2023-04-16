@@ -27,7 +27,7 @@ jobs:
           node-version: '18.13.0'
       - name: Set Version
         if: ${{ inputs.version != null }}
-        run: npm version "${IMAGE_VERSION:-$GITHUB_SHA}" --allow-same-version
+        run: npm version "${IMAGE_VERSION:-$GITHUB_SHA}" --allow-same-version --no-workspaces-update
       - name: Install
         run: npm install
       - name: Lint
