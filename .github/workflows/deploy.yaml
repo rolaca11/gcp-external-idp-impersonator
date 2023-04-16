@@ -9,11 +9,12 @@ on:
 
 permissions:
   contents: read
-  packages: write
   id-token: write
 
 jobs:
   deploy:
+    permissions:
+      packages: write
     name: Deploy
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
