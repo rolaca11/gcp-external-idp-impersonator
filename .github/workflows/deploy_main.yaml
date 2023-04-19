@@ -4,12 +4,6 @@ on:
     branches: [ main ]
 
 jobs:
-  asd:
-    name: Asd
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo ${{ secrets.ASD }}
-      - run: echo ${{ secrets.NODE_AUTH_TOKEN }}
   build:
     uses: "./.github/workflows/build.yaml"
   deploy:
@@ -17,3 +11,4 @@ jobs:
       - build
     name: Deploy
     uses: "./.github/workflows/deploy.yaml"
+    secrets: inherit

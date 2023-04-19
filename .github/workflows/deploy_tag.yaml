@@ -16,3 +16,4 @@ jobs:
     uses: "./.github/workflows/deploy.yaml"
     with:
       version: ${{github.ref_name}}
+    secrets: inherit

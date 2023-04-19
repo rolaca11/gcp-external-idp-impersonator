@@ -4,6 +4,9 @@ on:
     inputs:
       version:
         type: string
+    secrets:
+      NODE_AUTH_TOKEN:
+        required: true
 
 jobs:
   deploy:
