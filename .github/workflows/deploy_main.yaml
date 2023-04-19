@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ secrets.ASD }}
+      - run: echo ${{ secrets.NODE_AUTH_TOKEN }}
   build:
     uses: "./.github/workflows/build.yaml"
   deploy:
