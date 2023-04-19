@@ -3,9 +3,12 @@ on:
   push:
     branches: [ main ]
 
-permissions: write-all
-
 jobs:
+  asd:
+    name: Asd
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ secrets.ASD }}
   build:
     uses: "./.github/workflows/build.yaml"
   deploy:

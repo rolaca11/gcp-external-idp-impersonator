@@ -4,8 +4,6 @@ on:
     tags:
       - v*
 
-permissions: write-all
-
 jobs:
   build:
     uses: "./.github/workflows/build.yaml"
