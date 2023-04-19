@@ -13,5 +13,3 @@ jobs:
       - build
     name: Deploy
     uses: "./.github/workflows/deploy.yaml"
-    with:
-      environment: test
